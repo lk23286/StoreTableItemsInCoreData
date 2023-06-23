@@ -18,12 +18,7 @@ class TodoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var testItem = Item(context: context)
-        testItem.title = "LGL"
-        testItem.done = false
-        itemArray.append(testItem)
-        
-        // Do any additional setup after loading the view.
+        loadFile()
     }
 
     //MARK: - Table View
@@ -45,12 +40,11 @@ class TodoViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        var item = itemArray[indexPath.row]
         
-        item.done = !item.done
-        
-        tableView.reloadData()
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
+        item.done = !item.done
+        
+        saveFile()
     }
  
     
@@ -73,7 +67,7 @@ class TodoViewController: UITableViewController {
             
             self.itemArray.append(item)
             
-            self.tableView.reloadData()
+            self.saveFile()
         }
         
         alert.addTextField { newTextField in
@@ -84,5 +78,30 @@ class TodoViewController: UITableViewController {
         
         present(alert, animated: true)
     }
+    
+    //MARK: - Core Data Manipulation
+    
+    func saveFile() {
+        
+        do {
+           try context.save()
+        } catch {
+            print("Error during saving the data into CoreData. error: \(error)")
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func loadFile() {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error during loading the data from CoreData. error: \(error)")
+        }
+    }
+    
+    
 }
 
