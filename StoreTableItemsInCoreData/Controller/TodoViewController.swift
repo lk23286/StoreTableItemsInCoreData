@@ -8,19 +8,17 @@
 import UIKit
 import CoreData
 
-
 class TodoViewController: UITableViewController {
-    
     var itemArray = [Item]()
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadFile()
     }
-
+    
     //MARK: - Table View
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +27,9 @@ class TodoViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell")
+       
         var item = itemArray[indexPath.row]
+       
         cell?.textLabel?.text = itemArray[indexPath.row].title
         
         cell?.accessoryType = item.done ? .checkmark: .none
@@ -38,7 +38,7 @@ class TodoViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       var item = itemArray[indexPath.row]
+        var item = itemArray[indexPath.row]
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -46,7 +46,7 @@ class TodoViewController: UITableViewController {
         
         saveFile()
     }
- 
+    
     
     
     
@@ -71,7 +71,7 @@ class TodoViewController: UITableViewController {
         }
         
         alert.addTextField { newTextField in
-           textField = newTextField
+            textField = newTextField
         }
         
         alert.addAction(action)
@@ -82,9 +82,8 @@ class TodoViewController: UITableViewController {
     //MARK: - Core Data Manipulation
     
     func saveFile() {
-        
         do {
-           try context.save()
+            try context.save()
         } catch {
             print("Error during saving the data into CoreData. error: \(error)")
         }
@@ -102,6 +101,6 @@ class TodoViewController: UITableViewController {
         }
     }
     
-    
+
 }
 
