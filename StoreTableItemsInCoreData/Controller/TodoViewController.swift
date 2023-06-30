@@ -13,12 +13,14 @@ class TodoViewController: UITableViewController {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var selectedCateory: Category?
+    var selectedCateory: Category? {
+        didSet {
+            loadFile()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadFile()
     }
     
     //MARK: - Table View
@@ -29,9 +31,9 @@ class TodoViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell")
-       
+        
         let item = itemArray[indexPath.row]
-       
+        
         cell?.textLabel?.text = itemArray[indexPath.row].title
         
         cell?.accessoryType = item.done ? .checkmark: .none
@@ -64,6 +66,8 @@ class TodoViewController: UITableViewController {
             
             item.done = false
             
+            item.parentCategory = self.selectedCateory
+            
             self.itemArray.append(item)
             
             self.saveFile()
@@ -90,14 +94,25 @@ class TodoViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadFile() {
+    func loadFile(with predicate: NSPredicate? = nil) {
+        
         let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCateory!.name!)
+        
+        if let searchPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, searchPredicate])
+        } else {
+            request.predicate = categoryPredicate
+        }
         
         do {
             itemArray = try context.fetch(request)
         } catch {
             print("Error during loading the data from CoreData. error: \(error)")
         }
+        
+        tableView.reloadData()
     }
     
 }
@@ -105,7 +120,17 @@ class TodoViewController: UITableViewController {
 extension TodoViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        <#code#>
+        if let searchText = searchBar.text {
+            let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+            
+            loadFile(with: predicate)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            loadFile()
+        }
     }
 }
 
