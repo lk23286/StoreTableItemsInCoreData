@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 
 class TodoViewController: UITableViewController {
+   
     var itemArray = [Item]()
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -95,7 +96,6 @@ class TodoViewController: UITableViewController {
     }
     
     func loadFile(with predicate: NSPredicate? = nil) {
-        
         let request: NSFetchRequest<Item> = Item.fetchRequest()
         
         let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCateory!.name!)
@@ -114,7 +114,6 @@ class TodoViewController: UITableViewController {
         
         tableView.reloadData()
     }
-    
 }
 
 extension TodoViewController: UISearchBarDelegate {
