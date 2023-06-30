@@ -13,6 +13,8 @@ class TodoViewController: UITableViewController {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var selectedCateory: Category?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,9 +28,9 @@ class TodoViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell")
        
-        var item = itemArray[indexPath.row]
+        let item = itemArray[indexPath.row]
        
         cell?.textLabel?.text = itemArray[indexPath.row].title
         
@@ -38,7 +40,7 @@ class TodoViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var item = itemArray[indexPath.row]
+        let item = itemArray[indexPath.row]
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -46,9 +48,6 @@ class TodoViewController: UITableViewController {
         
         saveFile()
     }
-    
-    
-    
     
     //MARK: - Add Button Pressed
     
@@ -101,6 +100,12 @@ class TodoViewController: UITableViewController {
         }
     }
     
+}
 
+extension TodoViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        <#code#>
+    }
 }
 

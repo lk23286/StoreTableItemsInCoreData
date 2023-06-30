@@ -7,7 +7,46 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ToDo List is stored in CoreData-->
+        <!--Category in CoreData LGL2-->
+        <scene sceneID="TNO-9m-hDO">
+            <objects>
+                <tableViewController id="27O-CM-Xjh" customClass="CategoryViewController" customModule="StoreTableItemsInCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="EJX-Zn-h4F">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="q4j-8m-spK">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q4j-8m-spK" id="tw8-Vk-jvB">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="27O-CM-Xjh" id="b3g-oc-Uy0"/>
+                            <outlet property="delegate" destination="27O-CM-Xjh" id="28P-at-LcR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Category in CoreData LGL2" id="F9T-wc-Slp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Zo-Tc-lHZ">
+                            <color key="tintColor" red="1" green="0.87308019400000003" blue="0.16682595010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="27O-CM-Xjh" id="Rm1-Ye-lBZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="QNW-rh-CEG" kind="show" identifier="goToItems" id="Fnv-Ri-a8g"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rln-z7-mYa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1265" y="13"/>
+        </scene>
+        <!--Items stored in CoreData LGL2-->
         <scene sceneID="5vf-UI-wFH">
             <objects>
                 <tableViewController id="QNW-rh-CEG" customClass="TodoViewController" customModule="StoreTableItemsInCoreData" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,9 +54,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="f96-Jt-ro9">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="QNW-rh-CEG" id="qYJ-Cz-gL2"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoItemCell" id="td6-Kx-zHf">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="td6-Kx-zHf" id="VrD-O9-fND">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
@@ -30,7 +77,7 @@
                             <outlet property="delegate" destination="QNW-rh-CEG" id="ecJ-7B-Gtp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ToDo List is stored in CoreData" id="KhX-AW-rN6">
+                    <navigationItem key="navigationItem" title="Items stored in CoreData LGL2" id="KhX-AW-rN6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iUL-U7-Xyh">
                             <color key="tintColor" red="1" green="0.87308019400000003" blue="0.16682595010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -41,7 +88,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjo-8r-EAn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701.5267175572519" y="13.380281690140846"/>
+            <point key="canvasLocation" x="2027" y="13"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="USE-Qu-G29">
@@ -52,18 +99,22 @@
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.29767274859999998" green="0.43861997130000002" blue="0.184255898" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="1" green="0.87308019400000003" blue="0.16682595010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.87308019400000003" blue="0.16682595010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" red="1" green="0.87308019400000003" blue="0.16682595010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="QNW-rh-CEG" kind="relationship" relationship="rootViewController" id="ldI-LG-FKV"/>
+                        <segue destination="27O-CM-Xjh" kind="relationship" relationship="rootViewController" id="jBm-D7-bmt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKK-vM-c6B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774.80916030534343" y="13.380281690140846"/>
+            <point key="canvasLocation" x="512" y="13"/>
         </scene>
     </scenes>
     <resources>

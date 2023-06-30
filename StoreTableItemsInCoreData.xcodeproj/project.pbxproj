@@ -14,6 +14,7 @@
 		854C16752A462701005BCEFC /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 854C16732A462701005BCEFC /* DataModel.xcdatamodeld */; };
 		854C16772A462704005BCEFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854C16762A462704005BCEFC /* Assets.xcassets */; };
 		854C167A2A462704005BCEFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854C16782A462704005BCEFC /* LaunchScreen.storyboard */; };
+		85C05A522A4EBFB0002719F8 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C05A512A4EBFB0002719F8 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		854C16762A462704005BCEFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		854C16792A462704005BCEFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		854C167B2A462704005BCEFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85C05A512A4EBFB0002719F8 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				854C166E2A462701005BCEFC /* TodoViewController.swift */,
+				85C05A512A4EBFB0002719F8 /* CategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85C05A522A4EBFB0002719F8 /* CategoryViewController.swift in Sources */,
 				854C166F2A462701005BCEFC /* TodoViewController.swift in Sources */,
 				854C166B2A462701005BCEFC /* AppDelegate.swift in Sources */,
 				854C166D2A462701005BCEFC /* SceneDelegate.swift in Sources */,
